@@ -1,0 +1,578 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Nunito:wght@400;600;700&display=swap');
+
+/* ---------- 1. Variables ---------- */
+:root{
+    --color-primary:#7C5CBF;
+    --color-primary-dark:#5A3E8F;
+    --color-primary-light:#EAE1F7;
+    --color-accent:#E8A0B0;
+    --color-bg:#FFFFFF;
+    --color-bg-alt:#F7F4FA;
+    --color-text:#2E2A38;
+    --color-text-muted:#6B6577;
+    --font-heading:'Poppins', sans-serif;
+    --font-body:'Nunito', sans-serif;
+    --radius-lg:20px;
+    --radius-pill:50px;
+    --shadow-card:0 4px 24px rgba(90,62,143,0.08);
+    --shadow-card-hover:0 14px 32px rgba(90,62,143,0.15);
+    --shadow-btn:0 6px 16px rgba(124,92,191,0.28);
+    --maxw:1140px;
+}
+
+/* ---------- 2. Reset base ---------- */
+*, *::before, *::after{ box-sizing:border-box; }
+body{ margin:0; }
+h1,h2,h3,ul,ol,p,figure{ margin:0; padding:0; }
+ul{ list-style:none; }
+img{ max-width:100%; display:block; }
+a{ color:inherit; text-decoration:none; }
+button{ font-family:inherit; cursor:pointer; }
+
+body{
+    font-family:var(--font-body);
+    color:var(--color-text);
+    background:var(--color-bg);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+}
+
+h1,h2,h3{
+    font-family:var(--font-heading);
+    color:var(--color-text);
+    line-height:1.2;
+}
+
+/* Ancho de contenido centrado, estilo el sitio de referencia */
+header nav,
+main > section,
+footer{
+    max-width:var(--maxw);
+    margin-left:auto;
+    margin-right:auto;
+    padding-left:24px;
+    padding-right:24px;
+}
+
+.top-header{
+    background:var(--color-primary-dark);
+    color:#fff;
+    font-size:13.5px;
+    text-align:left;
+    padding:8px 24px;    
+}
+
+main > section{ padding-top:80px; padding-bottom:80px; }
+/* ---------- 3. Header / barra superior ---------- */
+header{
+    position:sticky;
+    top:0;
+    z-index:50;
+    background:#fff;
+    box-shadow:0 1px 0 rgba(0,0,0,0.05);
+}
+
+/* Barra de contacto rápido (primer div vacío del header) */
+header > div{
+    background:var(--color-primary-dark);
+    color:#fff;
+    font-size:13.5px;
+    text-align:center;
+    padding:8px 24px;
+}
+
+header nav{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding-top:18px;
+    padding-bottom:18px;
+}
+
+/* Logo: primer <a> directo dentro de nav */
+nav > a{
+    font-family:var(--font-heading);
+    font-weight:700;
+    font-size:20px;
+    color:var(--color-primary-dark);
+    letter-spacing:.3px;
+}
+
+nav > ul{
+    display:flex;
+    align-items:center;
+    gap:30px;
+    font-family:var(--font-heading);
+    font-weight:600;
+    font-size:15px;
+}
+
+nav > ul > li > a{
+    padding:6px 0;
+    position:relative;
+    transition:color .2s ease;
+}
+nav > ul > li > a:hover{ color:var(--color-primary); }
+
+/* Submenú "Terapias" */
+nav > ul > li{ position:relative; }
+nav > ul > li > ul{
+    display:none;
+    position:absolute;
+    top:calc(100% + 14px);
+    left:0;
+    background:#fff;
+    border-radius:14px;
+    box-shadow:var(--shadow-card-hover);
+    padding:10px;
+    min-width:200px;
+    flex-direction:column;
+    gap:2px;
+}
+nav > ul > li:hover > ul{ display:flex; }
+nav > ul > li > ul li a{
+    display:block;
+    padding:10px 14px;
+    border-radius:10px;
+    font-size:14px;
+    font-weight:500;
+    color:var(--color-text);
+}
+nav > ul > li > ul li a:hover{ background:var(--color-bg-alt); color:var(--color-primary-dark); }
+
+/* ---------- 4. Hero (section 1) ---------- */
+main > section:nth-of-type(1){
+    display:grid;
+    grid-template-columns:1.1fr .9fr;
+    align-items:center;
+    gap:56px;
+    padding-top:90px;
+    padding-bottom:90px;
+    background:linear-gradient(180deg, var(--color-primary-light) 0%, #fff 100%);
+}
+main > section:nth-of-type(1) h1{
+    font-size:clamp(32px,4.5vw,50px);
+    font-weight:700;
+    margin-bottom:6px;
+}
+main > section:nth-of-type(1) h2{
+    font-family:var(--font-body);
+    font-weight:600;
+    font-size:19px;
+    color:var(--color-text-muted);
+    margin-bottom:22px;
+}
+main > section:nth-of-type(1) p{
+    max-width:520px;
+    color:var(--color-text-muted);
+    font-size:16.5px;
+    margin-bottom:0;
+}
+main > section:nth-of-type(1) img{
+    border-radius:var(--radius-lg);
+    box-shadow:var(--shadow-card);
+    aspect-ratio:4/3;
+    object-fit:cover;
+    width:100%;
+}
+
+/* ---------- 5. Sobre mí (section 2) ---------- */
+main > section:nth-of-type(2){
+    text-align:center;
+    max-width:760px;
+}
+main > section:nth-of-type(2) h2{
+    font-size:28px;
+    margin-bottom:28px;
+}
+main > section:nth-of-type(2) img{
+    width:160px;
+    height:160px;
+    object-fit:cover;
+    border-radius:50%;
+    margin:0 auto 28px;
+    box-shadow:var(--shadow-card);
+}
+main > section:nth-of-type(2) p{
+    color:var(--color-text-muted);
+    font-size:16.5px;
+    margin-bottom:16px;
+    text-align:left;
+}
+
+/* ---------- 6. Servicios (#servicios) ---------- */
+#servicios{
+    background:var(--color-bg-alt);
+    border-radius:40px;
+}
+#servicios h2{
+    text-align:center;
+    font-size:30px;
+    margin-bottom:48px;
+}
+#servicios{
+    display:grid;
+}
+#servicios article:first-of-type{ margin-top:0; }
+#servicios{
+    display:grid;
+    grid-template-columns:1fr;
+}
+/* Grid de tarjetas: h2 ocupa toda la fila, los article se acomodan en columnas */
+#servicios{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:28px;
+    align-items:stretch;
+}
+#servicios h2{ grid-column:1 / -1; }
+
+#servicios article{
+    background:#fff;
+    border-radius:var(--radius-lg);
+    box-shadow:var(--shadow-card);
+    overflow:hidden;
+    padding-bottom:24px;
+    transition:transform .25s ease, box-shadow .25s ease;
+}
+#servicios article:hover{
+    transform:translateY(-6px);
+    box-shadow:var(--shadow-card-hover);
+}
+#servicios article img{
+    width:100%;
+    aspect-ratio:4/3;
+    object-fit:cover;
+    background:var(--color-primary-light);
+    margin-bottom:18px;
+}
+#servicios article h3{
+    font-size:16px;
+    letter-spacing:.3px;
+    color:var(--color-primary-dark);
+    padding:0 22px;
+    margin-bottom:10px;
+}
+#servicios article p{
+    padding:0 22px;
+    color:var(--color-text-muted);
+    font-size:14.5px;
+    min-height:44px;
+    margin-bottom:14px;
+}
+#servicios article a{
+    display:block;
+    margin:0 22px;
+    font-family:var(--font-heading);
+    font-weight:600;
+    color:var(--color-primary);
+    font-size:14px;
+    }
+#servicios article a::after{ content:" →"; }
+
+/* ---------- 7. Mini-kits (section 4) ---------- */
+main > section:nth-of-type(4){
+    background:var(--color-primary);
+    color:#fff;
+    text-align:center;
+    border-radius:40px;
+    max-width:calc(var(--maxw) - 48px);
+}
+main > section:nth-of-type(4) h2{
+    color:#fff;
+    font-size:15px;
+    letter-spacing:1.5px;
+    font-weight:600;
+    opacity:.85;
+    margin-bottom:12px;
+}
+main > section:nth-of-type(4) h3{
+    color:#fff;
+    font-family:var(--font-body);
+    font-weight:600;
+    font-size:26px;
+    max-width:560px;
+    margin:0 auto 28px;
+}
+main > section:nth-of-type(4) img{
+    border-radius:var(--radius-lg);
+    max-width:420px;
+    margin:0 auto 28px;
+    box-shadow:0 14px 32px rgba(0,0,0,0.2);
+}
+main > section:nth-of-type(4) a{
+    display:inline-block;
+    background:#fff;
+    color:var(--color-primary-dark);
+    font-family:var(--font-heading);
+    font-weight:600;
+    padding:14px 32px;
+    border-radius:var(--radius-pill);
+    box-shadow:0 6px 16px rgba(0,0,0,0.15);
+}
+
+/* ---------- 8. Testimonios (section 5) ---------- */
+main > section:nth-of-type(5){
+    text-align:center;
+}
+main > section:nth-of-type(5) h2{
+    font-size:28px;
+    margin-bottom:40px;
+}
+main > section:nth-of-type(5) > div{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:24px;
+}
+main > section:nth-of-type(5) blockquote{
+    background:var(--color-bg-alt);
+    border-radius:var(--radius-lg);
+    padding:28px;
+    font-style:italic;
+    color:var(--color-text-muted);
+    position:relative;
+}
+main > section:nth-of-type(5) blockquote::before{
+    content:"“";
+    font-family:var(--font-heading);
+    font-size:40px;
+    color:var(--color-primary);
+    display:block;
+    line-height:1;
+    margin-bottom:8px;
+    font-style:normal;
+}
+
+/* ---------- 9. Proceso (section 6) ---------- */
+main > section:nth-of-type(6){
+    background:var(--color-bg-alt);
+    border-radius:40px;
+    text-align:center;
+}
+main > section:nth-of-type(6) h2{
+    font-size:28px;
+    margin-bottom:12px;
+}
+main > section:nth-of-type(6) p{
+    color:var(--color-text-muted);
+    max-width:560px;
+    margin:0 auto 40px;
+}
+main > section:nth-of-type(6) ol{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:24px;
+    counter-reset:paso;
+}
+main > section:nth-of-type(6) ol li{
+    background:#fff;
+    border-radius:var(--radius-lg);
+    box-shadow:var(--shadow-card);
+    padding:32px 24px;
+    text-align:left;
+    font-size:14.5px;
+    color:var(--color-text-muted);
+    counter-increment:paso;
+    position:relative;
+}
+main > section:nth-of-type(6) ol li::before{
+    content:counter(paso);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width:34px;
+    height:34px;
+    border-radius:50%;
+    background:var(--color-primary);
+    color:#fff;
+    font-family:var(--font-heading);
+    font-weight:700;
+    font-size:14px;
+    margin-bottom:16px;
+}
+
+/* ---------- 10. Formulario (section 7) ---------- */
+main > section:nth-of-type(7){
+    max-width:640px;
+    text-align:center;
+}
+main > section:nth-of-type(7) h2{
+    font-size:28px;
+    margin-bottom:36px;
+}
+main > section:nth-of-type(7) form{
+    display:grid;
+    gap:16px;
+    text-align:left;
+}
+main > section:nth-of-type(7) label{ display:none; } /* etiquetas vacías: se usa placeholder visible */
+main > section:nth-of-type(7) input,
+main > section:nth-of-type(7) textarea{
+    width:100%;
+    padding:14px 18px;
+    border-radius:14px;
+    border:1.5px solid #E4DEF0;
+    background:var(--color-bg-alt);
+    font-family:var(--font-body);
+    font-size:15px;
+    color:var(--color-text);
+}
+main > section:nth-of-type(7) textarea{ min-height:110px; resize:vertical; }
+main > section:nth-of-type(7) input:focus,
+main > section:nth-of-type(7) textarea:focus{
+    outline:2px solid var(--color-primary);
+    border-color:transparent;
+}
+main > section:nth-of-type(7) button{
+    justify-self:start;
+    background:var(--color-primary);
+    color:#fff;
+    font-family:var(--font-heading);
+    font-weight:600;
+    font-size:15px;
+    padding:15px 34px;
+    border-radius:var(--radius-pill);
+    border:none;
+    box-shadow:var(--shadow-btn);
+    transition:transform .2s ease, background .2s ease;
+}
+main > section:nth-of-type(7) button:hover{
+    background:var(--color-primary-dark);
+    transform:translateY(-2px);
+}
+
+/* ---------- 11. FAQ (section 8) ---------- */
+main > section:nth-of-type(8){
+    max-width:760px;
+}
+main > section:nth-of-type(8) h2{
+    text-align:center;
+    font-size:28px;
+    margin-bottom:40px;
+}
+main > section:nth-of-type(8) details{
+    border-bottom:1.5px solid #ECE7F5;
+    padding:6px 0;
+}
+main > section:nth-of-type(8) summary{
+    font-family:var(--font-heading);
+    font-weight:600;
+    font-size:15.5px;
+    padding:16px 4px;
+    cursor:pointer;
+    list-style:none;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:16px;
+}
+main > section:nth-of-type(8) summary::-webkit-details-marker{ display:none; }
+main > section:nth-of-type(8) summary::after{
+    content:"+";
+    font-size:20px;
+    color:var(--color-primary);
+    flex-shrink:0;
+    transition:transform .2s ease;
+}
+main > section:nth-of-type(8) details[open] summary::after{ transform:rotate(45deg); }
+main > section:nth-of-type(8) details p{
+    color:var(--color-text-muted);
+    font-size:14.5px;
+    padding:0 4px 16px;
+}
+
+/* ---------- 12. Footer ---------- */
+footer{
+    background:var(--color-primary-dark);
+    color:#EDE7F6;
+    text-align:center;
+    max-width:none;
+    padding:70px 24px;
+}
+footer h2{
+    color:#fff;
+    font-size:26px;
+    margin-bottom:14px;
+}
+footer > p:first-of-type{
+    color:#D8CFEC;
+    margin-bottom:26px;
+}
+footer > div{
+    display:flex;
+    justify-content:center;
+    gap:16px;
+    flex-wrap:wrap;
+    margin-bottom:30px;
+}
+footer > div a{
+    background:rgba(255,255,255,0.08);
+    border-radius:var(--radius-pill);
+    padding:10px 24px;
+    font-family:var(--font-heading);
+    font-weight:600;
+    font-size:14px;
+    transition:background .2s ease;
+}
+footer > div a:hover{ background:rgba(255,255,255,0.18); }
+footer > p:last-of-type{
+    font-size:13px;
+    opacity:.65;
+}
+
+/* ==========================
+BOTÓN FLOTANTE DE WHATSAPP
+========================== */
+
+.whatsapp-float {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 56px;
+    height: 56px;
+    background-color: #25d366;
+    color: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.7rem;
+    text-decoration: none;
+    box-shadow: 0 4px 14px rgba(37, 211, 102, 0.45);
+    z-index: 999;
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.08);
+    box-shadow: 0 6px 18px rgba(37, 211, 102, 0.55);
+}
+
+/* En mobile un poco más chico */
+@media (max-width: 600px) {
+    .whatsapp-float {
+        width: 52px;
+        height: 52px;
+        bottom: 18px;
+        right: 18px;
+        font-size: 1.55rem;
+    }
+}
+
+
+/* ---------- 13. Responsive ---------- */
+@media (max-width: 900px){
+    nav > ul{ display:none; } /* podés sumar un botón de menú hamburguesa en el HTML si hace falta */
+    main > section:nth-of-type(1){ grid-template-columns:1fr; text-align:center; }
+    main > section:nth-of-type(1) p{ margin-left:auto; margin-right:auto; }
+    #servicios{ grid-template-columns:1fr 1fr; }
+    main > section:nth-of-type(5) > div{ grid-template-columns:1fr; }
+    main > section:nth-of-type(6) ol{ grid-template-columns:1fr; }
+}
+
+@media (max-width: 600px){
+    main > section{ padding-top:56px; padding-bottom:56px; }
+    #servicios{ grid-template-columns:1fr; }
+}
