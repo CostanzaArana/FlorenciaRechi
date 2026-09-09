@@ -47,9 +47,31 @@ detailsElements.forEach((targetDetail) => {
 });
 
 // ==========================================
-// CAPTURA Y ENVIÓ DEL FORMULARIO A FORMSPREE
+// ENVÍO DE FORMULARIO Y NOTIFICACIÓN CUSTOM
 // ==========================================
 const formContacto = document.querySelector('#contacto form');
+const toast = document.getElementById('toast-notification');
+const toastMessage = document.getElementById('toast-message');
+const toastIcon = document.getElementById('toast-icon');
+
+function mostrarNotificacion(mensaje, esError = false) {
+  toastMessage.textContent = mensaje;
+  toastIcon.textContent = esError ? '⚠️' : '✨';
+  
+  if (esError) {
+    toast.classList.add('error');
+  } else {
+    toast.classList.remove('error');
+  }
+
+  // Muestra la notificación con animación
+  toast.classList.remove('hidden');
+
+  // Oculta la notificación automáticamente tras 5 segundos
+  setTimeout(() => {
+    toast.classList.add('hidden');
+  }, 5000);
+}
 
 if (formContacto) {
   formContacto.addEventListener('submit', async (e) => {
@@ -72,13 +94,13 @@ if (formContacto) {
       });
 
       if (response.ok) {
-        alert('¡Gracias por tu mensaje! La consulta fue enviada a licflorenciarechi@gmail.com con éxito.');
+        mostrarNotificacion('¡Gracias por tu mensaje! La consulta fue enviada con éxito.');
         formContacto.reset();
       } else {
-        alert('Ocurrió un inconveniente al enviar la consulta. Por favor, intentá nuevamente o contactate por WhatsApp.');
+        mostrarNotificacion('Ocurrió un inconveniente al enviar la consulta. Intentá nuevamente.', true);
       }
     } catch (error) {
-      alert('Error de conexión. Por favor, verifica tu red e inténtalo de nuevo.');
+      mostrarNotificacion('Error de conexión. Por favor, verifica tu red.', true);
     } finally {
       button.textContent = originalText;
       button.disabled = false;

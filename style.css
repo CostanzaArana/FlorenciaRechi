@@ -683,3 +683,48 @@ footer p:last-child {
     padding: 24px;
   }
 }
+
+/* 14. NOTIFICACIÓN Y MENSAJES DE ESTADO (CENTRADOS) */
+.toast {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  background-color: var(--color-bg);
+  border: 2px solid var(--color-primary-light);
+  border-top: 6px solid var(--color-primary);
+  border-radius: 16px;
+  padding: 24px 32px;
+  box-shadow: 0 16px 40px rgba(90, 62, 143, 0.25);
+  z-index: 3000;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.26, 1.55);
+  max-width: 90%;
+  width: 400px;
+  text-align: center;
+}
+
+.toast.hidden {
+  opacity: 0;
+  transform: translate(-50%, -40%) scale(0.9);
+  pointer-events: none;
+}
+
+.toast-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+#toast-icon {
+  font-size: 2rem;
+}
+
+.toast.error {
+  border-top-color: #E8A0B0;
+  border-color: #FCE8EC;
+}
