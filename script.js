@@ -47,25 +47,41 @@ detailsElements.forEach((targetDetail) => {
 });
 
 // ==========================================
-// 3. CAPTURA Y MANEJO DEL FORMULARIO DE CONTACTO
+// CAPTURA Y ENVIÓ DEL FORMULARIO A FORMSPREE
 // ==========================================
 const formContacto = document.querySelector('#contacto form');
 
 if (formContacto) {
-  formContacto.addEventListener('submit', (e) => {
+  formContacto.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     const button = formContacto.querySelector('button[type="submit"]');
     const originalText = button.textContent;
+    const formData = new FormData(formContacto);
 
     button.textContent = 'Enviando...';
     button.disabled = true;
 
-    setTimeout(() => {
-      alert('¡Gracias por tu mensaje! Me pondré en contacto a la brevedad.');
-      formContacto.reset();
+    try {
+      const response = await fetch(formContacto.action, {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+
+      if (response.ok) {
+        alert('¡Gracias por tu mensaje! La consulta fue enviada a licflorenciarechi@gmail.com con éxito.');
+        formContacto.reset();
+      } else {
+        alert('Ocurrió un inconveniente al enviar la consulta. Por favor, intentá nuevamente o contactate por WhatsApp.');
+      }
+    } catch (error) {
+      alert('Error de conexión. Por favor, verifica tu red e inténtalo de nuevo.');
+    } finally {
       button.textContent = originalText;
       button.disabled = false;
-    }, 1200);
+    }
   });
 }
